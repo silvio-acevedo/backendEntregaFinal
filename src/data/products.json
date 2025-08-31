@@ -1,14 +1,1 @@
-[
-  {
-    "id": 1,
-    "title": "Mouse gamer",
-    "price": 15000,
-    "thumbnail": "https://example.com/mouse.jpg"
-  },
-  {
-    "id": 2,
-    "title": "Teclado mecánico",
-    "price": 35000,
-    "thumbnail": "https://example.com/teclado.jpg"
-  }
-]
+[]

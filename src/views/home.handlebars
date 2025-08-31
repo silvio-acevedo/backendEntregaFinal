@@ -1,12 +1,7 @@
-<h1>Lista de productos (Home)</h1>
+<h1>Lista de Productos</h1>
 
 <ul>
   {{#each products}}
-    <li>
-      <strong>{{this.title}}</strong>
-      - ${{this.price}}
-      <br />
-      <img src="{{this.thumbnail}}" alt="{{this.title}}" width="100" />
-    </li>
+    <li>{{this.title}} - ${{this.price}}</li>
   {{/each}}
 </ul>

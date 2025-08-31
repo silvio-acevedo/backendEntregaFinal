@@ -16,6 +16,7 @@ const PORT = 3030;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("/static", express.static(path.join(__dirname, "public"))); // js/css cliente
 
 // HANDLEBARS
 app.engine("handlebars", engine());
@@ -39,13 +40,13 @@ const productManager = new ProductManager(
 io.on("connection", async (socket) => {
   console.log("Cliente conectado");
 
-  // Enviamos productos apenas se conecta
+  // Enviamos productos al conectar
   const products = await productManager.getProducts();
   socket.emit("updateProducts", products);
 
   // Agregar producto
   socket.on("addProduct", async (data) => {
-    await productManager.addProduct(data);
+    await productManager.addProduct(data); // guarda en JSON
     const updatedProducts = await productManager.getProducts();
     io.emit("updateProducts", updatedProducts);
   });
