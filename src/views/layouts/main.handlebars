@@ -1,9 +1,20 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <title>Productos</title>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/static/css/styles.css" />
   </head>
   <body>
-    {{{body}}}
+    <header>
+      <h1>{{title}}</h1>
+      <nav>
+        <a href="/">Inicio</a>
+        |
+        <a href="/products">Productos</a>
+      </nav>
+    </header>
+    <main>
+      {{{body}}}
+    </main>
   </body>
 </html>

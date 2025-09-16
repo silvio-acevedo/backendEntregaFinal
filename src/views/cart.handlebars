@@ -1,0 +1,31 @@
+{{!-- <h2>Carrito</h2>
+
+<ul>
+  {{#each cart.products}}
+    <li>
+      {{this.product.nombre}}
+      - Cantidad:
+      {{this.quantity}}
+    </li>
+  {{/each}}
+</ul>
+
+<form action="/api/carts/{{cart._id}}/empty" method="POST">
+  <button type="submit">Vaciar carrito</button>
+</form> --}}
+
+<h2>Carrito</h2>
+
+<ul>
+  {{#each cart.products}}
+    <li>
+      {{this.product.nombre}}
+      - Cantidad:
+      {{this.quantity}}
+    </li>
+  {{/each}}
+</ul>
+
+<form action="/carts/{{cart._id}}/empty" method="POST">
+  <button type="submit">Vaciar carrito</button>
+</form>
