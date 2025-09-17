@@ -1,31 +1,39 @@
-{{!-- <h2>Carrito</h2>
+<h1>Carrito</h1>
 
-<ul>
-  {{#each cart.products}}
-    <li>
-      {{this.product.nombre}}
-      - Cantidad:
-      {{this.quantity}}
-    </li>
-  {{/each}}
-</ul>
+{{#if items.length}}
+  <table border="1" cellpadding="8">
+    <tr>
+      <th>Producto</th>
+      <th>Precio Unitario</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+    </tr>
+    {{#each items}}
+      <tr>
+        <td>{{this.nombre}}</td>
+        <td>${{this.precio}}</td>
+        <td>{{this.quantity}}</td>
+        <td>${{this.subtotal}}</td>
+      </tr>
+    {{/each}}
+  </table>
 
-<form action="/api/carts/{{cart._id}}/empty" method="POST">
-  <button type="submit">Vaciar carrito</button>
-</form> --}}
+  <h2>Total: ${{total}}</h2>
 
-<h2>Carrito</h2>
+  <form action="/carts/{{cartId}}/empty" method="POST" style="display:inline">
+    <button type="submit">Vaciar carrito</button>
+  </form>
 
-<ul>
-  {{#each cart.products}}
-    <li>
-      {{this.product.nombre}}
-      - Cantidad:
-      {{this.quantity}}
-    </li>
-  {{/each}}
-</ul>
+  <form
+    action="/carts/{{cartId}}/buy"
+    method="POST"
+    style="display:inline; margin-left:10px;"
+  >
+    <button type="submit">Comprar</button>
+  </form>
 
-<form action="/carts/{{cart._id}}/empty" method="POST">
-  <button type="submit">Vaciar carrito</button>
-</form>
+{{else}}
+  <p>El carrito está vacío</p>
+{{/if}}
+
+<a href="/products">⬅ Volver a productos</a>

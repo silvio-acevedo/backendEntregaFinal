@@ -1,30 +1,9 @@
-{{!-- <h2>{{product.nombre}}</h2>
-<p>Precio: ${{product.precio}}</p>
-<p>Categoría: {{product.categoria}}</p>
-<p>Stock: {{product.stock}}</p>
-<p>Descripción: {{product.descripcion}}</p>
-
-<form action="/carts/{{cartId}}/products/{{product._id}}" method="POST">
-  <label for="quantity">Cantidad:</label>
-  <input
-    type="number"
-    name="quantity"
-    value="1"
-    min="1"
-    max="{{product.stock}}"
-  />
-  <button type="submit">Agregar al carrito</button>
-</form>
-
-<a href="/products">⬅ Volver a productos</a> --}}
-
 <h2>{{product.nombre}}</h2>
-<p>Precio: ${{product.precio}}</p>
-<p>Categoría: {{product.categoria}}</p>
-<p>Stock: {{product.stock}}</p>
-<p>Descripción: {{product.descripcion}}</p>
+<p>{{product.categoria}}</p>
+<p>{{product.descripcion}}</p>
+<p>${{product.precio}}</p>
 
-<form action="/carts/{{cartId}}/products/{{product._id}}" method="POST">
+<form action="/api/carts/{{cartId}}/products/{{product._id}}" method="POST">
   <label for="quantity">Cantidad:</label>
   <input
     type="number"

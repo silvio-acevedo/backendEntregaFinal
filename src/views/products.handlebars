@@ -1,79 +1,21 @@
-{{!-- <h2>Listado de Productos</h2>
-
-<ul>
-  {{#each products}}
-    <li>
-      <a href="/products/{{_id}}">
-        {{nombre}} - ${{precio}} ({{categoria}})
-      </a>
-      {{#if stock}}
-        <span>Disponible: {{stock}}</span>
-      {{else}}
-        <span style="color:red;">Agotado</span>
-      {{/if}}
-
-      <!-- Botón agregar al carrito -->
-      <form 
-        action="/api/carts/{{../cartId}}/products/{{_id}}" 
-        method="POST" 
-        style="display:inline;"
-      >
-        <button type="submit">Agregar al carrito</button>
-      </form>
-    </li>
-  {{/each}}
-</ul>
-
-<div class="pagination">
-  {{#if prevLink}}
-    <a href="{{prevLink}}">⬅ Anterior</a>
-  {{/if}}
-  <span>Página {{page}} de {{totalPages}}</span>
-  {{#if nextLink}}
-    <a href="{{nextLink}}">Siguiente ➡</a>
-  {{/if}}
-</div> --}}
-
 <h2>Listado de Productos</h2>
 
 <ul>
   {{#each products}}
     <li>
       <a href="/products/{{_id}}">
-        {{nombre}}
-        - ${{precio}}
-        ({{categoria}})
+        {{nombre}} - ${{precio}}
       </a>
-      {{#if stock}}
-        <span>Disponible: {{stock}}</span>
-      {{else}}
-        <span style="color:red;">Agotado</span>
-      {{/if}}
-
-      <form
-        action="/carts/{{cartId}}/products/{{_id}}"
-        method="POST"
-        style="display:inline;"
-      >
-        <input
-          type="number"
-          name="quantity"
-          value="1"
-          min="1"
-          max="{{stock}}"
-        />
-        <button type="submit">Agregar al carrito</button>
-      </form>
     </li>
   {{/each}}
 </ul>
 
 <div class="pagination">
   {{#if hasPrevPage}}
-    <a href="/products?page={{prevPage}}&limit=5">⬅ Anterior</a>
+    <a href="/products?page={{prevPage}}&limit={{limit}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">⬅ Anterior</a>
   {{/if}}
-  <span>Página {{page}} de {{totalPages}}</span>
+  <span> Página {{page}} de {{totalPages}} </span>
   {{#if hasNextPage}}
-    <a href="/products?page={{nextPage}}&limit=5">Siguiente ➡</a>
+    <a href="/products?page={{nextPage}}&limit={{limit}}{{#if query}}&query={{query}}{{/if}}{{#if sort}}&sort={{sort}}{{/if}}">Siguiente ➡</a>
   {{/if}}
 </div>
